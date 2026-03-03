@@ -1,0 +1,9 @@
+.student{
+    display: flex;
+    justify-content: center;
+
+    &__image {
+        border: solid 4px gainsboro;
+        transition: .3s;
+    }
+}

@@ -1,0 +1,134 @@
+// Zmienne klimatyczne
+$bg-main: #000000; // Absolutna czerń
+$bg-message-user: #1a1a1a; // Bardzo ciemny szary dla detektywa
+$text-primary: #ffffff; // Czysta biel
+$text-secondary: #aaaaaa; // Przygaszony szary dla zeznań
+$accent-red: #660000; // Mroczna czerwień (akcent)
+$border-color: #222222; // Ledwo widoczne obramowania
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+
+  // 💡 TO BLOKUJE ROZSZERZANIE SIĘ OKNA
+  width: 100%;
+  max-width: 700px;
+  height: 40vh;
+  min-height: 300px;
+
+  margin: 20px auto;
+
+  background-color: $bg-main;
+  border: 1px solid $border-color;
+  font-family: "Courier New", Courier, monospace; // Styl maszyny do pisania
+  color: $text-primary;
+}
+
+.messages {
+  flex: 1; // Zajmuje całą górną przestrzeń
+  padding: 20px;
+
+  // 💡 TO WŁĄCZA SCROLLOWANIE WEWNĄTRZ
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  // Stylizacja scrollbara (żeby nie był standardowy, jasny)
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #000;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #333;
+  }
+}
+
+.message {
+  padding: 10px 15px;
+  max-width: 85%;
+  line-height: 1.5;
+  border: 1px solid transparent;
+
+  &.user {
+    // Detektyw (Ty)
+    align-self: flex-end;
+    background-color: $bg-message-user;
+    color: $text-primary;
+    text-align: right;
+    border-right: 3px solid #444;
+  }
+
+  &.assistant {
+    // Podejrzany (AI)
+    align-self: flex-start;
+    background-color: transparent;
+    color: $text-secondary;
+    border-left: 3px solid $accent-red; // Czerwony ślad przesłuchania
+  }
+}
+
+.loader {
+  color: $accent-red;
+  font-weight: bold;
+  animation: blink 0.8s infinite;
+}
+
+.interface {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid $border-color;
+  background-color: #050505;
+  gap: 10px;
+
+  &__input {
+    flex: 1;
+    background: #000;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 10px;
+    font-family: inherit;
+    outline: none;
+
+    &:focus {
+      border-color: #666;
+    }
+  }
+
+  &__button {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: inherit;
+    transition: background 0.2s;
+
+    &:hover:not(:disabled) {
+      background: $accent-red;
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

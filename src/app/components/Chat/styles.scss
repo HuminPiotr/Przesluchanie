@@ -9,12 +9,14 @@ $border-color: #222222; // Ledwo widoczne obramowania
 .chat-container {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 
   // 💡 TO BLOKUJE ROZSZERZANIE SIĘ OKNA
   width: 100%;
   max-width: 700px;
-  height: 35vh;
-  min-height: 300px;
+  height: 100%;
+  min-height: 0px;
+  overflow-y: auto;
 
   margin: 20px auto;
 

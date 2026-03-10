@@ -1,9 +1,14 @@
-.student{
-    display: flex;
-    justify-content: center;
+.student {
+  display: flex;
+  justify-content: center;
 
-    &__image {
-        border: solid 4px gainsboro;
-        transition: .3s;
-    }
+  &__image {
+    border: solid 4px gainsboro;
+    transition: 0.3s;
+    max-width: 100%; /* Nie wyjdzie poza szerokość rodzica */
+    height: auto; /* Zachowa proporcje (bardzo ważne!) */
+    display: block; /* Usuwa zbędne światło pod obrazkiem */
+    object-fit: contain;
+    max-height: 40vh;
+  }
 }
